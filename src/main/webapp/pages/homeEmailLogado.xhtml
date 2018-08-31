@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:insert name="metadata" />
+
+<h:head>
+
+	<h:outputStylesheet library="css" name="estilo.css" />
+
+
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Nossa Loja</title>
+</h:head>
+<h:body>
+
+	<p:growl id="msgGlobal" />
+
+	<p:layout fullPage="true">
+
+
+
+
+		<p:layoutUnit position="north" size="65" resizable="false"
+			closable="false" collapsible="false">
+
+			<h:form>
+				<p:menubar>
+					<p:submenu label="Arquivo">
+						<p:menuitem value="Principal" outcome="/pages/homeLogado.xhtml" />
+					</p:submenu>
+
+					<p:submenu label="Cursos" >
+						<p:menuitem value="Todos os cursos" outcome="/pages/cursosLogado.xhtml"/>
+					</p:submenu>
+
+					<p:submenu label="Fale Conosco">
+						<p:menuitem value="e-mail" outcome="/pages/homeEmailLogado.xhtml"/>
+					</p:submenu>
+
+					<p:submenu label="Sobre">
+						<p:menuitem value="Nossa História" outcome="/pages/nossaHistoriaLogado.xhtml"/>
+					</p:submenu>
+
+					
+
+					<f:facet name="options">
+						<p:outputLabel value="Bem-Vindo: #{checkLogin.logado.nome}" />
+						
+						<p:button value="Sair" outcome="/pages/homeDeslogado.xhtml"/>
+					</f:facet>
+					
+					
+					
+					
+
+				</p:menubar>
+			</h:form>
+		</p:layoutUnit>
+
+
+
+		<p:layoutUnit position="center" resizable="false" closable="false"
+			collapsible="false">
+			<p:panel header="Fale Conosco">
+				<h:form>
+					<p:outputPanel deferred="true">
+					<h3>Email:curso@hotmail.com</h3>
+						<h3>Telefone: 2129-2856</h3>
+						<p>Output panel is a container element with several use cases
+							such as autoUpdate and deferred loading. This example
+							demonstrates the deferred loading feature with two modes where
+							the content of the panel is loaded after the page itself is
+							loaded to speed up initial page load time. There are two deferred
+							modes, "load" (after page load) and "visible" (after page load
+							and visible after page scroll). A progress indicator is also
+							provided while loading the content.</p>
+					</p:outputPanel>
+
+					<div style="height: 600px"></div>
+
+
+				</h:form>
+			</p:panel>
+		</p:layoutUnit>
+	</p:layout>
+
+</h:body>
+</html>

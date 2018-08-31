@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	>
+	
+
+<ui:insert name="metadata" />
+
+<h:head>
+
+	<h:outputStylesheet library="css" name="estilo.css" />
+
+
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Nossa História</title>
+</h:head>
+<h:body>
+
+	<p:growl id="msgGlobal" />
+
+	<p:layout fullPage="true">
+
+
+
+
+		<p:layoutUnit position="north" size="65" resizable="false"
+			closable="false" collapsible="false">
+
+			<h:form>
+				<p:menubar>
+					<p:submenu label="Arquivo">
+						<p:menuitem value="Principal" outcome="/pages/homeDeslogado.xhtml" />
+					</p:submenu>
+					<p:submenu label="Cursos">
+						<p:menuitem value="Todos os cursos"
+							outcome="/pages/cursoDeslogado.xhtml" />
+					</p:submenu>
+
+					<p:submenu label="Fale Conosco">
+						<p:menuitem value="e-mail" />
+					</p:submenu>
+
+					<p:submenu label="Sobre">
+						<p:menuitem value="Nossa História" />
+					</p:submenu>
+
+					
+
+					<f:facet name="options">
+						<p:commandButton value="Logar" oncomplete="PF('dialogo').show();"
+							actionListener="#{checkLogin.novo1}" />
+						<p:commandButton value="Cadastrar"
+							oncomplete="PF('dialogocad').show();"
+							actionListener="#{cadastroBean.novo}" />
+					</f:facet>
+
+				</p:menubar>
+
+
+			</h:form>
+
+			<p:dialog widgetVar="dialogo" resizable="false" closable="true"
+				header="Logar" appendTo="@(body)" showEffect="explode"
+				hideEffect="bounce">
+				<h:form id="formDialogo">
+					<p:panelGrid columns="2" id="pnDialogo">
+						<p:outputLabel value="Login:" />
+						<p:inputText value="#{checkLogin.pessoa.login}" />
+
+						<p:outputLabel value="Senha:" />
+						<p:password value="#{checkLogin.pessoa.senha}" />
+					</p:panelGrid>
+					<p:panelGrid columns="1">
+						<p:commandButton value="Entrar"
+							actionListener="#{checkLogin.autenticar}" update=":msgGlobal" />
+					</p:panelGrid>
+				</h:form>
+			</p:dialog>
+
+			<p:dialog widgetVar="dialogocad" resizable="false" closable="true"
+				header="Logar" appendTo="@(body)" showEffect="explode"
+				hideEffect="bounce">
+				<h:form id="formDialogoCad">
+					<p:panelGrid columns="2" id="pnDialogoCad">
+
+						<p:outputLabel value="Nome:" />
+						<p:inputText value="#{cadastroBean.pessoa.nome}" />
+
+						<p:outputLabel value="CPF:" />
+						<p:inputMask mask="999.999.999-99"
+							value="#{cadastroBean.pessoa.cpf}" />
+
+						<p:outputLabel value="Estado" />
+						<p:selectOneMenu filter="true"
+							value="#{cadastroBean.pessoa.estado}"
+							converter="omnifaces.SelectItemsConverter" required="true"
+							requiredMessage="O campo 'Estado' é obrigatório">
+							<f:selectItem noSelectionOption="true"
+								itemLabel="Selecione um Estado" />
+							<f:selectItems value="#{cadastroBean.estados}" var="estado"
+								itemValue="#{estado}"
+								itemLabel="#{estado.nome} - #{estado.sigla}" />
+						</p:selectOneMenu>
+
+
+						<p:outputLabel value="Cidade" />
+						<p:selectOneMenu filter="true"
+							value="#{cadastroBean.pessoa.cidade}"
+							converter="omnifaces.SelectItemsConverter" required="true"
+							requiredMessage="O campo 'Cidade' é obrigatório">
+							<f:selectItem noSelectionOption="true"
+								itemLabel="Selecione uma Cidade" />
+							<f:selectItems value="#{cadastroBean.cidades}" var="cidade"
+								itemValue="#{cidade}" itemLabel="#{cidade.nome}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel value="Login:" />
+						<p:inputText value="#{cadastroBean.pessoa.login}" />
+
+						<p:outputLabel value="Senha:" />
+						<p:password value="#{cadastroBean.pessoa.senha}" />
+
+						<p:outputLabel value="E-mail" />
+						<p:inputText value="#{cadastroBean.pessoa.email}" />
+
+
+					</p:panelGrid>
+					<p:panelGrid columns="1">
+						<p:commandButton value="Cadastrar"
+							oncomplete="PF('dialogocad').hide()"
+							actionListener="#{cadastroBean.cadastrar}"
+							update=":formDialogoCad:pnDialogoCad :msgGlobal" />
+					</p:panelGrid>
+				</h:form>
+			</p:dialog>
+
+		</p:layoutUnit>
+
+
+
+		<p:layoutUnit position="center" resizable="false" closable="false" collapsible="false">
+		<p:panel header="Nossa História">
+				<h:form>
+					<p:outputPanel deferred="true">
+						<h3>Pedro Palmerim Dantas.</h3>
+						<p>Output panel is a container element with several use cases
+							such as autoUpdate and deferred loading. This example
+							demonstrates the deferred loading feature with two modes where
+							the content of the panel is loaded after the page itself is
+							loaded to speed up initial page load time. There are two deferred
+							modes, "load" (after page load) and "visible" (after page load
+							and visible after page scroll). A progress indicator is also
+							provided while loading the content.</p>
+					</p:outputPanel>
+
+					<div style="height: 600px"></div>
+
+
+				</h:form>
+			</p:panel>
+		
+           
+		</p:layoutUnit>
+	</p:layout>
+
+</h:body>
+</html>

@@ -1,0 +1,31 @@
+@charset "ISO-8859-1";
+
+.ui-layout-north {
+	z-index: 20 !important;
+	overflow: visible !important;
+	
+}
+
+.ui-layout-north, .ui-layout-unit-content {
+	overflow: visible !important;
+	
+}
+
+.ui-widget .ui-widget .ui-widget {
+	font-size:95% !important;
+}
+
+.ui-button, .ui-commandButton {
+	width: 110px;
+   
+    
+	background-color: #FF0000 !important;
+	border-radius: 10px 0px 10px 0px !important;
+}
+
+.ui-body {
+    background-image: url(""curso-php-java-android-sql-programaco-super-avancado-D_NQ_NP_991232-MLB26826552170_022018-F");
+    background-repeat: no-repeat, repeat;
+    background-color: #cccccc;
+}
+
